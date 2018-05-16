@@ -1,5 +1,6 @@
-package com.orchid.huarenzixun.configuration;
+package com.orchid.huarenzixun.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +12,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.orchid.huarenzixun.web"})
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig  implements WebMvcConfigurer  {
 
-    // Configure a JSP view resolver
+
+    /**
+     * Configure a JSP view resolver
+     */
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -29,14 +33,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
      * requests for static resources to the servlet container's default
      * servlet and not to try to handle them itself.
      */
-    @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+
         configurer.enable();
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        super.addResourceHandlers(registry);
+
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
     }
 
 }

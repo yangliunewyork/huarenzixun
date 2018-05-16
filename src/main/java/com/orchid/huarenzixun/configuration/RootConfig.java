@@ -11,8 +11,7 @@ import java.util.regex.Pattern;
 @ComponentScan(
     basePackages={"com.orchid.huarenzixun"},
     excludeFilters={
-            @ComponentScan.Filter(type = FilterType.CUSTOM,
-                    value = RootConfig.WebPackage.class)
+        @ComponentScan.Filter(type = FilterType.CUSTOM, value = RootConfig.WebPackage.class)
     }
 )
 public class RootConfig {

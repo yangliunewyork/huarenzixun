@@ -1,7 +1,7 @@
-package com.orchid.huarenzixun.web;
+package com.orchid.huarenzixun.configuration;
 
-import com.orchid.huarenzixun.configuration.RootConfig;
-import com.orchid.huarenzixun.configuration.WebConfig;
+
+import com.orchid.huarenzixun.web.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
@@ -13,16 +13,19 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
+
         return new Class<?>[] { RootConfig.class };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
+
         return new Class<?>[] { WebConfig.class };
     }
 
     @Override
     protected String[] getServletMappings() {
+
         return new String[] { "/" };
     }
 
